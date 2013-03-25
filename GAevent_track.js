@@ -62,7 +62,7 @@ for (i=0;i<GAtags.length;i++)
 //You can choose which functions to run on events you choose (ex: onMouseMove). 
 //Add & Remove by commenting out
 //
-//MOUSE EVENTS
+//ADD MOUSE EVENTS
 //
 //The event occurs when the user clicks on an element
 GAtags[i].setAttribute("onclick","ga_event_track_onClick(this.id)");
@@ -79,7 +79,7 @@ GAtags[i].setAttribute("onmouseover","ga_event_track_mouseOver(this.id)");
 //The event occurs when a user moves the mouse pointer out of an element
 GAtags[i].setAttribute("onmouseout","ga_event_track_mouseOut(this.id)");
 //
-//KEYBOARD EVENTS
+//ADD KEYBOARD EVENTS
 //
 //The event occurs when the user is pressing a key
 GAtags[i].setAttribute("onkeydown","ga_event_track_keyDown(this.id)"); 
@@ -88,35 +88,35 @@ GAtags[i].setAttribute("onkeypress","ga_event_track_keyPress(this.id)");
 //The event occurs when the user releases a key
 GAtags[i].setAttribute("onkeyup","ga_event_track_keyUp(this.id)"); 
 //
-//FRAME/OBJECT EVENTS
+//ADD FRAME/OBJECT EVENTS
 //
 //The event occurs when an image is stopped from loading before completely loaded (for <object>)
-//onabort
+GAtags[i].setAttribute("onabort","ga_event_track_onAbort(this.id)");
 //The event occurs when an image does not load properly (for <object>, <body> and <frameset>)    
-//onerror
+GAtags[i].setAttribute("onerror","ga_event_track_onError(this.id)");
 //The event occurs when a document, frameset, or <object> has been loaded
-//onload
+GAtags[i].setAttribute("onload","ga_event_track_onLoad(this.id)");
 //The event occurs when a document view is resized
-//onresize
+GAtags[i].setAttribute("onresize","ga_event_track_onResize(this.id)");
 //The event occurs when a document view is scrolled
-//onscroll
+GAtags[i].setAttribute("onscroll","ga_event_track_onScroll(this.id)");
 //The event occurs once a page has unloaded (for <body> and <frameset>)
-//onunload
+GAtags[i].setAttribute("onunload","ga_event_track_onUnload(this.id)");
 //
-//FORM EVENTS
+//ADD FORM EVENTS
 //
 //The event occurs when a form element loses focus
-//onblur
+GAtags[i].setAttribute("onblur","ga_event_track_onBlur(this.id)");
 //The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <select>, and <textarea>)
-//onchange
+GAtags[i].setAttribute("onchange","ga_event_track_onChange(this.id)");
 //The event occurs when an element gets focus (for <label>, <input>, <select>, textarea>, and <button>)
-//onfocus
+GAtags[i].setAttribute("onfocus","ga_event_track_onFocus(this.id)");
 //The event occurs when a form is reset
-//onreset
+GAtags[i].setAttribute("onreset","ga_event_track_onReset(this.id)");
 //The event occurs when a user selects some  text (for <input> and <textarea>)
-//onselect
+GAtags[i].setAttribute("onselect","ga_event_track_onSelect(this.id)");
 //The event occurs when a form is submitted
-//onsubmit
+GAtags[i].setAttribute("onsubmit","ga_event_track_onSubmit(this.id)");
 }
 
 
@@ -153,4 +153,42 @@ _gaq.push(['_trackEvent', 'User Interaction', 'Keyboard', 'user pressed a key' +
 }
 function ga_event_track_keyDown(x){
 _gaq.push(['_trackEvent', 'User Interaction', 'Keyboard', 'user released a key' + ' ' + x.toString() ]);
+}
+//FRAME/OBJECT EVENTS
+function ga_event_track_onAbort(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Abort', 'user aborted -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onError(x){
+_gaq.push(['_trackEvent', 'Error', 'Fail',  'failed -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onLoad(x){
+_gaq.push(['_trackEvent', 'Frame/Object', 'Load', 'document/object has loaded -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onResize(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Resize', 'document/object has resized -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onScroll(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Scroll', 'document/object view was scrolled -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onUnload(x){
+_gaq.push(['_trackEvent', 'Frame/Object', 'Unload', 'document/object was unloaded -->' + ' ' + x.toString() ]);
+}
+//FORM EVENTS
+function ga_event_track_onBlur(x){
+_gaq.push(['_trackEvent', 'Form Events', 'Blur', 'Form element lost focus -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onChange(x){
+_gaq.push(['_trackEvent', 'Form Events', 'Change', 'Form content changed -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onFocus(x){
+_gaq.push(['_trackEvent', 'Form Events', 'Focus', 'Form element got focus -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onReset(x){
+_gaq.push(['_trackEvent', 'Form Events', 'Reset', 'Form was reset -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onSelect(x){
+_gaq.push(['_trackEvent', 'Form Events', 'Select', 'User selected text -->' + ' ' + x.toString() ]);
+}
+function ga_event_track_onSubmit(x){
+_gaq.push(['_trackEvent', 'Form Events', 'Submit', 'User submitted form -->' + ' ' + x.toString() ]);
 }
