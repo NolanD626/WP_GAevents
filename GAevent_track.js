@@ -2,7 +2,10 @@
 var GAevents=document.querySelectorAll("BODY")[0];
 var i;
 var GAtags = new Array();
-//Get the first 50 tags and put them into an array
+//Get the first 50 tags and put them into an array (or add more)
+//You can replace the '*' with any HTML or XML Tag you like
+//example: 'DIV' 'P' 'H1' 'H2' 'IMG' 'INPUT' 'BUTTON'
+//creating options pages for these settings should be possible in the near future
 GAtags[0] = GAevents.getElementsByTagName('*')[0];
 GAtags[1] = GAevents.getElementsByTagName('*')[1];
 GAtags[2] = GAevents.getElementsByTagName('*')[2];
@@ -54,14 +57,70 @@ GAtags[47] = GAevents.getElementsByTagName('*')[47];
 GAtags[48] = GAevents.getElementsByTagName('*')[48];
 GAtags[49] = GAevents.getElementsByTagName('*')[49];
 //for each HTML tag in the array, 
-//add the tracking script function to onClick, onKeyUp, & onMouseOver
 for (i=0;i<GAtags.length;i++)
 {
-GAtags[i].setAttribute("onkeyup","ga_event_track_wroteIn(this.id)"); 
-GAtags[i].setAttribute("onmouseover","ga_event_track_movedOver(this.id)");
+//You can choose which functions to run on events you choose (ex: onMouseMove). 
+//Add & Remove by commenting out
+//
+//MOUSE EVENTS
+//
+//The event occurs when the user clicks on an element
 GAtags[i].setAttribute("onclick","ga_event_track_clickedOn(this.id)");
+//The event occurs when the user double-clicks on an element
+GAtags[i].setAttribute("ondblclick","ga_event_track_clickedOn(this.id)");
+//The event occurs when a user presses a mouse button over an element
+GAtags[i].setAttribute("onmousedown","ga_event_track_clickedOn(this.id)");
+//The event occurs when a user releases a mouse button over an element
+GAtags[i].setAttribute("onmouseup","ga_event_track_clickedOn(this.id)");
+//The event occurs when the pointer is moving while it is over an element
+GAtags[i].setAttribute("onmousemove","ga_event_track_movedOver(this.id)");
+//The event occurs when the pointer is moved onto an element
+GAtags[i].setAttribute("onmouseover","ga_event_track_movedOver(this.id)");
+//The event occurs when a user moves the mouse pointer out of an element
+GAtags[i].setAttribute("onmouseout","ga_event_track_movedOver(this.id)");
+//
+//KEYBOARD EVENTS
+//
+//The event occurs when the user is pressing a key
+GAtags[i].setAttribute("onkeydown","ga_event_track_wroteIn(this.id)"); 
+//The event occurs when the user presses a key
+GAtags[i].setAttribute("onkeypress","ga_event_track_wroteIn(this.id)"); 
+//The event occurs when the user releases a key
+GAtags[i].setAttribute("onkeyup","ga_event_track_wroteIn(this.id)"); 
+//
+//FRAME/OBJECT EVENTS
+//
+//The event occurs when an image is stopped from loading before completely loaded (for <object>)
+//onabort
+//The event occurs when an image does not load properly (for <object>, <body> and <frameset>) 	 
+//onerror
+//The event occurs when a document, frameset, or <object> has been loaded
+//onload
+//The event occurs when a document view is resized
+//onresize
+//The event occurs when a document view is scrolled
+//onscroll
+//The event occurs once a page has unloaded (for <body> and <frameset>)
+//onunload
+//
+//FORM EVENTS
+//
+//The event occurs when a form element loses focus
+//onblur
+//The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <select>, and <textarea>)
+//onchange
+//The event occurs when an element gets focus (for <label>, <input>, <select>, textarea>, and <button>)
+//onfocus
+//The event occurs when a form is reset
+//onreset
+//The event occurs when a user selects some  text (for <input> and <textarea>)
+//onselect
+//The event occurs when a form is submitted
+//onsubmit
 }
-//onEvent Functions
+
+
+//GA onEvent Functions
 function ga_event_track_movedOver(x){
 _gaq.push(['_trackEvent', 'User Interaction', 'Mouse Movement', 'user moved mouse over' + ' '  + x.toString() ]);
 }
