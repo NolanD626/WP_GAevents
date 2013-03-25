@@ -65,34 +65,34 @@ for (i=0;i<GAtags.length;i++)
 //MOUSE EVENTS
 //
 //The event occurs when the user clicks on an element
-GAtags[i].setAttribute("onclick","ga_event_track_clickedOn(this.id)");
+GAtags[i].setAttribute("onclick","ga_event_track_onClick(this.id)");
 //The event occurs when the user double-clicks on an element
-GAtags[i].setAttribute("ondblclick","ga_event_track_clickedOn(this.id)");
+GAtags[i].setAttribute("ondblclick","ga_event_track_dblClick(this.id)");
 //The event occurs when a user presses a mouse button over an element
-GAtags[i].setAttribute("onmousedown","ga_event_track_clickedOn(this.id)");
+GAtags[i].setAttribute("onmousedown","ga_event_track_mouseDown(this.id)");
 //The event occurs when a user releases a mouse button over an element
-GAtags[i].setAttribute("onmouseup","ga_event_track_clickedOn(this.id)");
+GAtags[i].setAttribute("onmouseup","ga_event_track_mouseUp(this.id)");
 //The event occurs when the pointer is moving while it is over an element
-GAtags[i].setAttribute("onmousemove","ga_event_track_movedOver(this.id)");
+GAtags[i].setAttribute("onmousemove","ga_event_track_mouseMove(this.id)");
 //The event occurs when the pointer is moved onto an element
-GAtags[i].setAttribute("onmouseover","ga_event_track_movedOver(this.id)");
+GAtags[i].setAttribute("onmouseover","ga_event_track_mouseOver(this.id)");
 //The event occurs when a user moves the mouse pointer out of an element
-GAtags[i].setAttribute("onmouseout","ga_event_track_movedOver(this.id)");
+GAtags[i].setAttribute("onmouseout","ga_event_track_mouseOut(this.id)");
 //
 //KEYBOARD EVENTS
 //
 //The event occurs when the user is pressing a key
-GAtags[i].setAttribute("onkeydown","ga_event_track_wroteIn(this.id)"); 
+GAtags[i].setAttribute("onkeydown","ga_event_track_keyDown(this.id)"); 
 //The event occurs when the user presses a key
-GAtags[i].setAttribute("onkeypress","ga_event_track_wroteIn(this.id)"); 
+GAtags[i].setAttribute("onkeypress","ga_event_track_keyPress(this.id)"); 
 //The event occurs when the user releases a key
-GAtags[i].setAttribute("onkeyup","ga_event_track_wroteIn(this.id)"); 
+GAtags[i].setAttribute("onkeyup","ga_event_track_keyUp(this.id)"); 
 //
 //FRAME/OBJECT EVENTS
 //
 //The event occurs when an image is stopped from loading before completely loaded (for <object>)
 //onabort
-//The event occurs when an image does not load properly (for <object>, <body> and <frameset>) 	 
+//The event occurs when an image does not load properly (for <object>, <body> and <frameset>)    
 //onerror
 //The event occurs when a document, frameset, or <object> has been loaded
 //onload
@@ -121,13 +121,36 @@ GAtags[i].setAttribute("onkeyup","ga_event_track_wroteIn(this.id)");
 
 
 //GA onEvent Functions
-function ga_event_track_movedOver(x){
-_gaq.push(['_trackEvent', 'User Interaction', 'Mouse Movement', 'user moved mouse over' + ' '  + x.toString() ]);
+//MOUSE BUTTON EVENTS
+function ga_event_track_onClick(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user clicked mouse button on' + ' '  + x.toString() ]);
 }
-function ga_event_track_clickedOn(x){
-_gaq.push(['_trackEvent', 'User Interaction', 'Mouse Click', 'user clicked mouse on' + ' '  + x.toString() ]);
+function ga_event_track_dblClick(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user double clicked mouse button on' + ' '  + x.toString() ]);
 }
-function ga_event_track_wroteIn(x){
-_gaq.push(['_trackEvent', 'User Interaction', 'Key Press', 'user typed in' + ' ' + x.toString() ]);
-
+function ga_event_track_mouseDown(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user is clicking mouse button down on' + ' '  + x.toString() ]);
+}
+function ga_event_track_mouseUp(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user is releasing mouse on' + ' '  + x.toString() ]);
+}
+//MOUSE MOVE EVENTS
+function ga_event_track_mouseMove(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user is moving mouse over' + ' '  + x.toString() ]);
+}
+function ga_event_track_mouseOver(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user moved mouse over' + ' '  + x.toString() ]);
+}
+function ga_event_track_mouseOut(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Mouse', 'user moved mouse out' + ' '  + x.toString() ]);
+}
+//KEYBOARD EVENTS
+function ga_event_track_keyDown(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Keyboard', 'user is holding a key down' + ' ' + x.toString() ]);
+}
+function ga_event_track_keyPress(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Keyboard', 'user pressed a key' + ' ' + x.toString() ]);
+}
+function ga_event_track_keyDown(x){
+_gaq.push(['_trackEvent', 'User Interaction', 'Keyboard', 'user released a key' + ' ' + x.toString() ]);
 }
