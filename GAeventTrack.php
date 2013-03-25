@@ -10,10 +10,13 @@ License: GPL2
 */
 ?>
 <?php
-//Enqueue Script to Page (Load JS without crashing/glitching out WP)
+//Enqueue Event Javajcript
 function write_GAevent_Script() {
 wp_register_script( 'write_GAevent_Script', plugins_url('GAevent_track.js', __FILE__) );
 
 wp_enqueue_script("write_GAevent_Script", WP_PLUGIN_DIR . '/GAeventTrack/GAevent_track.js', false, false, true);
 }
 add_action('wp_enqueue_scripts', 'write_GAevent_Script');
+
+//Expecting more? That's all folks.
+//The JS file can be loaded on any HTML Document, not just wordpress.
