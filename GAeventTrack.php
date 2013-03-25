@@ -17,4 +17,3 @@ wp_register_script( 'write_GAevent_Script', plugins_url('GAevent_track.js', __FI
 wp_enqueue_script("write_GAevent_Script", WP_PLUGIN_DIR . '/GAeventTrack/GAevent_track.js', false, false, true);
 }
 add_action('wp_enqueue_scripts', 'write_GAevent_Script');
-?>
