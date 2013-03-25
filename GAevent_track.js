@@ -5,7 +5,7 @@ var GAtags = new Array();
 //Get the first 50 tags and put them into an array (or add more)
 //You can replace the '*' with any HTML or XML Tag you like
 //example: 'DIV' 'P' 'H1' 'H2' 'IMG' 'INPUT' 'BUTTON'
-//creating options pages for these settings should be possible in the near future
+//creating options pages for these settings via the wordpress dashboard should be possible in the near future
 GAtags[0] = GAevents.getElementsByTagName('*')[0];
 GAtags[1] = GAevents.getElementsByTagName('*')[1];
 GAtags[2] = GAevents.getElementsByTagName('*')[2];
@@ -60,7 +60,7 @@ GAtags[49] = GAevents.getElementsByTagName('*')[49];
 for (i=0;i<GAtags.length;i++)
 {
 //You can choose which functions to run on events you choose (ex: onMouseMove). 
-//Add & Remove by commenting out
+//Remove event types by them commenting out
 //
 //ADD MOUSE EVENTS
 //
@@ -118,8 +118,7 @@ GAtags[i].setAttribute("onselect","ga_event_track_onSelect(this.id)");
 //The event occurs when a form is submitted
 GAtags[i].setAttribute("onsubmit","ga_event_track_onSubmit(this.id)");
 }
-
-
+//
 //GA onEvent Functions
 //MOUSE BUTTON EVENTS
 function ga_event_track_onClick(x){
